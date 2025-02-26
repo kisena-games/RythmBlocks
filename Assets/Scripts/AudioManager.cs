@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public const string SFXVolumeKey = "SFXVolume";
 
     private AudioSource _audioSource;
+    private AudioClip _defaultMusic;
 
     private void OnEnable()
     {
@@ -25,7 +26,12 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        _audioSource.Stop();
+
+        LevelSO currentLevel = GameManager.Instance.CurrentLevel;
+        _audioSource.clip = currentLevel != null ? currentLevel._music : _defaultMusic;
         
+        _audioSource.Play();
     }
 
     private void Awake()
@@ -41,6 +47,7 @@ public class AudioManager : MonoBehaviour
         }
 
         _audioSource = GetComponent<AudioSource>();
+        _defaultMusic = _audioSource.clip;
     }
 
     private void Start()

@@ -10,6 +10,6 @@ public class LevelsPanel : MonoBehaviour
 
     public void LoadLevel(int index)
     {
-        LevelManager.Instance.LoadLevel(index);
+        GameManager.Instance.LoadLevel(index);
     }
 }
