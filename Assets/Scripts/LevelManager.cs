@@ -3,18 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager Instance;
+    private AudioClip _music;
+    private int _bpm;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        _music = GameManager.Instance.CurrentLevel.music;
+        _bpm = GameManager.Instance.CurrentLevel.bpm;
     }
 }

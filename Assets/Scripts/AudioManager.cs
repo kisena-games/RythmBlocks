@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
         _audioSource.Stop();
 
         LevelSO currentLevel = GameManager.Instance.CurrentLevel;
-        _audioSource.clip = currentLevel != null ? currentLevel._music : _defaultMusic;
+        _audioSource.clip = currentLevel != null ? currentLevel.music : _defaultMusic;
         
         _audioSource.Play();
     }
